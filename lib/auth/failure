@@ -1,0 +1,27 @@
+class LogInWithEmailAndPasswordFailure {
+  final String message;
+
+  LogInWithEmailAndPasswordFailure({this.message});
+
+  factory LogInWithEmailAndPasswordFailure.fromCode(String code) {
+    String errorMessage;
+    switch (code) {
+      case 'invalid-email':
+        errorMessage = 'Invalid email address.';
+        break;
+      case 'user-disabled':
+        errorMessage = 'This user account has been disabled.';
+        break;
+      case 'user-not-found':
+        errorMessage = 'User with this email address not found.';
+        break;
+      case 'wrong-password':
+        errorMessage = 'Invalid password.';
+        break;
+      default:
+        errorMessage = 'An unknown error occurred.';
+        break;
+    }
+    return LogInWithEmailAndPasswordFailure(message: errorMessage);
+  }
+}

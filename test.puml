@@ -1,0 +1,381 @@
+@startuml
+set namespaceSeparator ::
+
+class "pfef::auth::authentificantion.dart::authentification" {
+  -FirebaseAuth _auth
+  +Rx<User?> firebaseUser
+  +RxString verificationId
+  +String phoneno
+  {static} +authentification instance
+  {static} +dynamic phoneController
+  +void onReady()
+  -dynamic _setInitialScreen()
+  +dynamic phoneauth()
+  +dynamic verifyOTP()
+  +dynamic createUserWithEmailAndPassword()
+  +dynamic loginWithEmailAndPassword()
+  +dynamic logout()
+}
+
+"pfef::auth::authentificantion.dart::authentification" o-- "firebase_auth::firebase_auth.dart::FirebaseAuth"
+"pfef::auth::authentificantion.dart::authentification" o-- "get::get_rx::src::rx_types::rx_types.dart::Rx<User>"
+"pfef::auth::authentificantion.dart::authentification" o-- "get::get_rx::src::rx_types::rx_types.dart::RxString"
+"pfef::auth::authentificantion.dart::authentification" o-- "pfef::auth::authentificantion.dart::authentification"
+"get::get_state_manager::src::simple::get_controllers.dart::GetxController" <|-- "pfef::auth::authentificantion.dart::authentification"
+
+class "pfef::auth::failurelogin.dart::LogInWithEmailAndPasswordFailure" {
+  +String message
+}
+
+class "pfef::auth::signupwithemailandpassword.dart::SignUpWithEmailAndPasswordFailure" {
+  +String message
+}
+
+class "pfef::componants::infocard.dart::infocard" {
+  +String name
+  +String profession
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "pfef::componants::infocard.dart::infocard"
+
+class "pfef::componants::menubtn.dart::menubtn" {
+  +void Function() press
+  +void Function(Artboard) riveOnInit
+  +Widget build()
+}
+
+"pfef::componants::menubtn.dart::menubtn" o-- "dart::ui::void Function()"
+"pfef::componants::menubtn.dart::menubtn" o-- "flutter::src::foundation::basic_types.dart::void Function(Artboard)"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "pfef::componants::menubtn.dart::menubtn"
+
+class "pfef::componants::sidemenutitle.dart::sidemenutitle" {
+  +RiveAsset menu
+  +void Function() press
+  +void Function(Artboard) riveonInit
+  +bool isActive
+  +Widget build()
+}
+
+"pfef::componants::sidemenutitle.dart::sidemenutitle" o-- "pfef::model::rivemodel.dart::RiveAsset"
+"pfef::componants::sidemenutitle.dart::sidemenutitle" o-- "dart::ui::void Function()"
+"pfef::componants::sidemenutitle.dart::sidemenutitle" o-- "flutter::src::foundation::basic_types.dart::void Function(Artboard)"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "pfef::componants::sidemenutitle.dart::sidemenutitle"
+
+class "pfef::componants::textfield.dart::textfield" {
+  +String texthint
+  +TextInputType textInputType
+  +dynamic icon
+  +bool obscure
+  +dynamic controler
+  +Widget build()
+}
+
+"pfef::componants::textfield.dart::textfield" o-- "flutter::src::services::text_input.dart::TextInputType"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "pfef::componants::textfield.dart::textfield"
+
+class "pfef::controlers::controlerssignup1.dart::signupcontrler1" {
+  +TextEditingController email
+  +TextEditingController password
+  +TextEditingController name
+  +TextEditingController age
+  {static} +signupcontrler1 instance
+  +void registration()
+  +void phoneauth()
+}
+
+"pfef::controlers::controlerssignup1.dart::signupcontrler1" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"pfef::controlers::controlerssignup1.dart::signupcontrler1" o-- "pfef::controlers::controlerssignup1.dart::signupcontrler1"
+"get::get_state_manager::src::simple::get_controllers.dart::GetxController" <|-- "pfef::controlers::controlerssignup1.dart::signupcontrler1"
+
+class "pfef::controlers::login.dart::LoginController" {
+  +TextEditingController email
+  +TextEditingController password
+  {static} +LoginController instance
+  +dynamic loginUser()
+}
+
+"pfef::controlers::login.dart::LoginController" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"pfef::controlers::login.dart::LoginController" o-- "pfef::controlers::login.dart::LoginController"
+"get::get_state_manager::src::simple::get_controllers.dart::GetxController" <|-- "pfef::controlers::login.dart::LoginController"
+
+class "pfef::controlers::Otpcontroller.dart::OTPController" {
+  {static} +OTPController instance
+  +void verifyOTP()
+}
+
+"pfef::controlers::Otpcontroller.dart::OTPController" o-- "pfef::controlers::Otpcontroller.dart::OTPController"
+"get::get_state_manager::src::simple::get_controllers.dart::GetxController" <|-- "pfef::controlers::Otpcontroller.dart::OTPController"
+
+class "pfef::firebase_options.dart::DefaultFirebaseOptions" {
+  {static} +FirebaseOptions web
+  {static} +FirebaseOptions android
+  {static} +FirebaseOptions ios
+  {static} +FirebaseOptions macos
+  {static} +FirebaseOptions currentPlatform
+}
+
+"pfef::firebase_options.dart::DefaultFirebaseOptions" o-- "firebase_core_platform_interface::firebase_core_platform_interface.dart::FirebaseOptions"
+
+class "pfef::main.dart::MyApp" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "pfef::main.dart::MyApp"
+
+class "pfef::model::rivemodel.dart::RiveAsset" {
+  +String artboard
+  +String stateMachineName
+  +String title
+  +String src
+  +SMIBool? input
+  +SMIBool setInput
+}
+
+"pfef::model::rivemodel.dart::RiveAsset" o-- "rive::src::controllers::state_machine_controller.dart::SMIBool"
+
+class "pfef::pages::button.dart::button" {
+  +String iconImagepath
+  +String buttonText
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "pfef::pages::button.dart::button"
+
+class "pfef::pages::EventPage.dart::EventPage" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "pfef::pages::EventPage.dart::EventPage"
+
+class "pfef::pages::Historique_Page::Historymodel.dart::Historymodel" {
+  +String how_much
+  +String when
+  +String time
+  +String rideId
+}
+
+class "pfef::pages::Historique_Page.dart::Historique_Page" {
+  +State<Historique_Page> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "pfef::pages::Historique_Page.dart::Historique_Page"
+
+class "pfef::pages::Historique_Page.dart::_Historique_PageState" {
+  -bool _isLoaded
+  -int _currentIndex
+  +List<Color> gradientColors
+  +void initState()
+  +Widget build()
+  +LineChartData mainData()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "pfef::pages::Historique_Page.dart::_Historique_PageState"
+
+class "pfef::pages::hold.dart::hold" {
+  +State<hold> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "pfef::pages::hold.dart::hold"
+
+class "pfef::pages::hold.dart::_holdState" {
+  -int _currentIndex
+  +dynamic setCurrentIndex()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "pfef::pages::hold.dart::_holdState"
+
+class "pfef::pages::homepage.dart::homepage" {
+  +State<homepage> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "pfef::pages::homepage.dart::homepage"
+
+class "pfef::pages::homepage.dart::_homepageState" {
+  -GlobalKey<FormState> _formKey
+  +TextEditingController emailController
+  +TextEditingController passwordController
+  +LoginController controller
+  +Widget build()
+}
+
+"pfef::pages::homepage.dart::_homepageState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"pfef::pages::homepage.dart::_homepageState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"pfef::pages::homepage.dart::_homepageState" o-- "pfef::controlers::login.dart::LoginController"
+"flutter::src::widgets::framework.dart::State" <|-- "pfef::pages::homepage.dart::_homepageState"
+
+class "pfef::pages::Home_Page.dart::Home_Page" {
+  +State<Home_Page> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "pfef::pages::Home_Page.dart::Home_Page"
+
+class "pfef::pages::Home_Page.dart::_HomePageState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "pfef::pages::Home_Page.dart::_HomePageState"
+
+class "pfef::pages::line_titles.dart::LineTitles" {
+  {static} +dynamic getTitleData()
+}
+
+class "pfef::pages::LoginPage.dart::LoginPage" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "pfef::pages::LoginPage.dart::LoginPage"
+
+class "pfef::pages::mainpage.dart::mainpage" {
+  +State<mainpage> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "pfef::pages::mainpage.dart::mainpage"
+
+class "pfef::pages::mainpage.dart::_mainpageState" {
+  +RiveAsset selectedMenu
+  +void initState()
+  +Widget build()
+}
+
+"pfef::pages::mainpage.dart::_mainpageState" o-- "pfef::model::rivemodel.dart::RiveAsset"
+"flutter::src::widgets::framework.dart::State" <|-- "pfef::pages::mainpage.dart::_mainpageState"
+
+class "pfef::pages::otp_screen.dart::OTPScreen" {
+  +dynamic otp
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "pfef::pages::otp_screen.dart::OTPScreen"
+
+class "pfef::pages::Paiementpar_PayPal.dart::Paiementpar_PayPal" {
+  +State<Paiementpar_PayPal> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "pfef::pages::Paiementpar_PayPal.dart::Paiementpar_PayPal"
+
+class "pfef::pages::Paiementpar_PayPal.dart::_signinState" {
+  +String dropdownvalue
+  +bool? isChecked
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "pfef::pages::Paiementpar_PayPal.dart::_signinState"
+
+class "pfef::pages::paimentpar_bank.dart::paiementpar_Banque" {
+  +State<paiementpar_Banque> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "pfef::pages::paimentpar_bank.dart::paiementpar_Banque"
+
+class "pfef::pages::paimentpar_bank.dart::_signinState" {
+  +String dropdownvalue
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "pfef::pages::paimentpar_bank.dart::_signinState"
+
+class "pfef::pages::Paimentpar_paypal.dart::Paiementpar_PayPal" {
+  +State<Paiementpar_PayPal> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "pfef::pages::Paimentpar_paypal.dart::Paiementpar_PayPal"
+
+class "pfef::pages::Paimentpar_paypal.dart::_signinState" {
+  +String dropdownvalue
+  +bool? isChecked
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "pfef::pages::Paimentpar_paypal.dart::_signinState"
+
+class "pfef::pages::passwordforgot.dart::passwordforgot" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "pfef::pages::passwordforgot.dart::passwordforgot"
+
+class "pfef::pages::paymentparapplication.dart::paiement_par_Application" {
+  +State<paiement_par_Application> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "pfef::pages::paymentparapplication.dart::paiement_par_Application"
+
+class "pfef::pages::paymentparapplication.dart::_signinState" {
+  +String dropdownvalue
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "pfef::pages::paymentparapplication.dart::_signinState"
+
+class "pfef::pages::ProfilePage.dart::ProfilePage" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "pfef::pages::ProfilePage.dart::ProfilePage"
+
+class "pfef::pages::ProfilePage.dart::ProfileWidget" {
+  +String title
+  +IconData icon
+  +void Function() onPress
+  +bool endIcon
+  +Color? textColor
+  +Widget build()
+}
+
+"pfef::pages::ProfilePage.dart::ProfileWidget" o-- "flutter::src::widgets::icon_data.dart::IconData"
+"pfef::pages::ProfilePage.dart::ProfileWidget" o-- "dart::ui::void Function()"
+"pfef::pages::ProfilePage.dart::ProfileWidget" o-- "dart::ui::Color"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "pfef::pages::ProfilePage.dart::ProfileWidget"
+
+class "pfef::pages::signin1.dart::signin1" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "pfef::pages::signin1.dart::signin1"
+
+class "pfef::pages::signin2.dart::signin" {
+  +State<signin> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "pfef::pages::signin2.dart::signin"
+
+class "pfef::pages::signin2.dart::_signinState" {
+  +String dropdownvalue
+  +TextEditingController phoneController
+  -GlobalKey<FormState> _formKey
+  +signupcontrler1 controller
+  +String phoneNumber
+  +Widget build()
+}
+
+"pfef::pages::signin2.dart::_signinState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"pfef::pages::signin2.dart::_signinState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"pfef::pages::signin2.dart::_signinState" o-- "pfef::controlers::controlerssignup1.dart::signupcontrler1"
+"flutter::src::widgets::framework.dart::State" <|-- "pfef::pages::signin2.dart::_signinState"
+
+class "pfef::pages::transactionpage.dart::transaction_page" {
+  +State<transaction_page> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "pfef::pages::transactionpage.dart::transaction_page"
+
+class "pfef::pages::transactionpage.dart::_transaction_pageState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "pfef::pages::transactionpage.dart::_transaction_pageState"
+
+class "pfef::pages::verification.dart::verification" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "pfef::pages::verification.dart::verification"
+
+class "pfef::utils::riveutils.dart::RiveUtils" {
+  {static} +StateMachineController getRiveController()
+}
+
+
+@enduml

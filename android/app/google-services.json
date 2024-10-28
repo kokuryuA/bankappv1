@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "560811182746",
+    "project_id": "pfef-46142",
+    "storage_bucket": "pfef-46142.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:560811182746:android:9a8c7ecfa4441453956d23",
+        "android_client_info": {
+          "package_name": "com.example.pfef"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "560811182746-r5t05gji8576e0ij2ogcotn1mglocq2m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pfef",
+            "certificate_hash": "7ce6d2ebf9b87e9ee1a7a71087412c2bac77fb49"
+          }
+        },
+        {
+          "client_id": "560811182746-iklfr4g9ptupbf7b07itq24e5a4oq5a7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAl6Z-VpvZSw47fuvamWY7eEVGYujvSkS4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "560811182746-iklfr4g9ptupbf7b07itq24e5a4oq5a7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "560811182746-pi21rn0gqu3h7kf3k9f8mhjrqpa215vf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.pfef"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
